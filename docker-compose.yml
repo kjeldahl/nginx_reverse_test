@@ -1,0 +1,22 @@
+services:
+    reverseproxy:
+        build:
+          context: .
+        image: reverseproxy
+        ports:
+            - 443:443
+        restart: always
+        volumes:
+          - ./certs/:/etc/nginx/certs/
+ 
+    nginx:
+        depends_on:
+            - reverseproxy
+        image: nginx:alpine
+        restart: always
+ 
+    apache:
+        depends_on:
+            - reverseproxy
+        image: httpd:alpine
+        restart: always
