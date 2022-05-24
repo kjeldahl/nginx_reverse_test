@@ -11,6 +11,7 @@ INSTALLATION
 brew bundle # To install mkcert
 
 mkcert -install # Install mkcert root certificate
+
 mkdir certs
 mkcert -cert-file certs/site12.local.pem -key-file certs/site12.local-key.pem site1.localhost site2.localhost
 
